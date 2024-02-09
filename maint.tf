@@ -1,7 +1,3 @@
-provider "aws" {
-  region = local.region
-}
-
 locals {
   name   = "volley-cluster"
   region = "us-east-1"
