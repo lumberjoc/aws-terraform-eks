@@ -12,4 +12,3 @@ crash.log
 # password, private keys, and
 .terraform.lock.hcl
 *.tfstate
-.terraform.lock.hcl
