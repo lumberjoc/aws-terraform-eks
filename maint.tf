@@ -1,5 +1,5 @@
 locals {
-  name   = "volley-cluster"
+  name   = "prod-cluster"
   region = "us-east-1"
 
   vpc_cidr = "10.123.0.0/16"
@@ -69,7 +69,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    volley-cluster-wg = {
+    prod-cluster-wg = {
       min_size     = 1
       max_size     = 2
       desired_size = 1
@@ -78,7 +78,7 @@ module "eks" {
       capacity_type  = "SPOT"
 
       tags = {
-        ExtraTag = "volley"
+        ExtraTag = "prod"
       }
     }
   }
