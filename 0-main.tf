@@ -1,5 +1,5 @@
 locals {
-  name   = "prod-cluster"
+  name   = "buildkite-cluster"
   region = "us-east-1"
 
   vpc_cidr = "10.123.0.0/16"
@@ -63,13 +63,13 @@ module "eks" {
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
     ami_type       = "AL2_x86_64"
-    instance_types = ["m5.large"]
+    instance_types = ["t2.small"]
 
     attach_cluster_primary_security_group = true
   }
 
   eks_managed_node_groups = {
-    prod-cluster-wg = {
+    buildkite-cluster-wg = {
       min_size     = 1
       max_size     = 2
       desired_size = 1
@@ -78,7 +78,7 @@ module "eks" {
       capacity_type  = "SPOT"
 
       tags = {
-        ExtraTag = "prod"
+        ExtraTag = "buildkite"
       }
     }
   }
